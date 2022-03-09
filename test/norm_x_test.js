@@ -1,3 +1,5 @@
+//Требуются файлы norm_x, object_rationing.js, test/mess.js
+
 function equal_arrays(mas1, mas2){
     if (mas1.length != mas2.length ) return 1;
     if (mas1.length + mas2.length == 0) return 0;

@@ -1,3 +1,4 @@
+//Требуются файлы object_rationing.js, test/mess.js
 
 function object_rationing_test(){
     document.write("Тестирование функции object_rationing<br>")
