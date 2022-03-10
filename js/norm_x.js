@@ -1,3 +1,4 @@
+//Требуемые файлы: object_rationing.js
 //вход: одномерный массив, int, int, одномерный массив
 //выход: одномерный массив
 function norm_x(mas, max, min, rez){
