@@ -1,4 +1,6 @@
 function x(mas){
-    mas = get(mas, [100, 1, 1])
+    mas.push([4, 10, 10])
     return mas
 }
+
+console.log("File x.js included")
