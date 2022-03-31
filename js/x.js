@@ -1,5 +1,7 @@
 function x(mas){
-    mas.push([4, 10, 10])
+    mas.push(4)
+    mas.push(10)
+    mas.push(10)
     return mas
 }
 
