@@ -42,6 +42,7 @@ function main(){
     //определение класса
     q = klaster(euc_dist_var)
     document.write("Принадлежность к классу: ", q)
+    document.write('<br>')
 }
 
 console.log("File main.js included")

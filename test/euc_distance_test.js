@@ -1,4 +1,4 @@
-//Требуемые файлы:
+//Требуемые файлы: js/euc_distance.js, mess.js
 
 function euc_distance_test(){
     document.write("Тестирование функции euc_distance<br>")
