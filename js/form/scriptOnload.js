@@ -38,7 +38,7 @@ window.onload = function () {
 		document.getElementById(s1).innerHTML = textStr;
 		textStr = "";
 	}
-	console.log("Задание с текстовм выведено");
+	console.log("Задание с текстом выведено");
 	//передача данных для задания с цветом
 	lenght = dataProvColor.length;
 	for (var i = 0; i < lenght; i++) {
