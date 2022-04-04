@@ -1,6 +1,7 @@
 //задание с группированием слов
 var colorBD = ["white", "rgb(255,255,203)", "rgb(205,205,94)", "rgb(255, 205, 94)", "rgb(180,255,87)", "rgb(255,205,152)", "rgb(0,255,148)", "rgb(255,205,205)", "rgb(67,255,203)", "rgb(222,154,154)", "rgb(126, 205, 205)", "rgb(222,154,207)", "rgb(154,154,207)", "rgb(205,205,255)"];
 var flag = 1;
+var result = [];
 
 function colorWord() {
 
@@ -21,7 +22,26 @@ function colorWord() {
     
 };
 
+//Вывод всех попыток на форму
+function checkColorWord(){
+    var printBlock = document.getElementById("printBlock");
+    //var pElement = document.createElement("tr");
+    result.push(clickProvColorWord())
+    //var prompt = klaster()
+    var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
+    var len = result.length; 
+    for (var i = 0; i < len; i++){
+        strColorWord += "<tr> <td>"
+        strColorWord += (i + 1).toString() + "</td>"
+        strColorWord += "<td>" + result[i].toString() + "</td>"
+    }
+    //pElement.innerHTML = str + "</tr>"
+    //printBlock.appendChild(pElement);
+    printBlock.innerHTML = strColorWord
+}
+
 function clickProvColorWord() {
+    
     for (var i = 0; i < this.lenght; i++) {
         var s = "word" + i;
         word = document.getElementById(s);
@@ -53,18 +73,22 @@ function clickProvColorWord() {
         flagColor = true;
         oneColor = true;
     }
+
+    var colTrueAnswer = 0;
     for (var j = 1; j <= numberKoren; j++) {
         for (var i = 0; i < lenght; i++) {
             if (wordcolor[1][i] == j) {
+                if (wordcolor[2][i] != 'white') colTrueAnswer += 1;
                 if (wordcolor[2][i] != color[j]) {
                     wordcolor[0][i].style.backgroundColor = 'white';
+                    colTrueAnswer -= 1;
                     selekt = false;
                 }
             }
         }
     }
 
-    return selekt;
+    return colTrueAnswer;
 }
 
 function clickProvColorWordNew() {
@@ -98,4 +122,5 @@ function trueAnswerColor() {
             }
         }
     }
+    
 }

@@ -89,9 +89,11 @@
                 <td></td>
             </tr>
         </table><br>
+        <button type="submit" class="btn btn-primary" onclick="checkColorWord()">Проверка</button><br />
         <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button><br />
         <button type="submit" class="btn btn-primary" onclick="trueAnswerColor()">Показать правильный ответ</button>
-        <p></p>
+        <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printBlock">
+        </table>
     </div>
     <div id="Task3" class=" task" style="display:none">
         <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
@@ -256,7 +258,6 @@
         </table>
     </div>
 
-
 <script>
     function openTask(tabName) {
         if (globalFlagOnload) { 
@@ -275,5 +276,6 @@
 <script src="../js/form/scriptTestColor.js"></script>
 <script src="../js/form/scriptTestSelect.js"></script>
 <script src="../js/form/scriptProverka.js"></script>
-</body>
+
+    </body>
 </html>
