@@ -15,10 +15,6 @@ function proverka() {
                 document.getElementById(ss).className += " w3-red";
             } else document.getElementById(ss).className += " w3-green";
         }
-        //проверка задания с цветом
-        if (!clickProvColorWord()) {
-            document.getElementById("color").className += " w3-red";
-        } else document.getElementById("color").className += " w3-green";
         kolShortAnswer = masShortAnswer.length;
         //проверка всех заданий с кратким ответом
         for (var i = 0; i < kolShortAnswer; i++) {
