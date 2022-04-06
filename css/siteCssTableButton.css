@@ -82,3 +82,8 @@
     color: #fff !important;
     background-color: #4CAF50 !important
 }
+
+.w3-yellow, .w3-hover-green:hover {
+    color: #fff !important;
+    background-color: #ff9900!important
+}
