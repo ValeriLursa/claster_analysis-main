@@ -27,17 +27,19 @@ function checkColorWord(){
     var printBlock = document.getElementById("printBlock");
     //var pElement = document.createElement("tr");
     result.push(clickProvColorWord())
-    //var prompt = klaster()
-    var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-    var len = result.length; 
-    for (var i = 0; i < len; i++){
-        strColorWord += "<tr> <td>"
-        strColorWord += (i + 1).toString() + "</td>"
-        strColorWord += "<td>" + result[i].toString() + "</td>"
+    if (result == -1) printBlock.innerHTML = "Все поля должны быть закрашены"
+    else {
+        var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
+        var len = result.length; 
+        for (var i = 0; i < len; i++){
+            strColorWord += "<tr> <td>"
+            strColorWord += (i + 1).toString() + "</td>"
+            strColorWord += "<td>" + result[i].toString() + "</td>"
+        }
+        //pElement.innerHTML = str + "</tr>"
+        //printBlock.appendChild(pElement);
+        printBlock.innerHTML = strColorWord
     }
-    //pElement.innerHTML = str + "</tr>"
-    //printBlock.appendChild(pElement);
-    printBlock.innerHTML = strColorWord
 }
 
 function clickProvColorWord() {
@@ -47,6 +49,7 @@ function clickProvColorWord() {
         word = document.getElementById(s);
         if (word == this.wordcolor[0][i]) this.wordcolor[2][i] = word.style.backgroundColor;
     }
+
     var selekt = true;
     var color = [];
     var oneColor = true;
@@ -66,6 +69,7 @@ function clickProvColorWord() {
                     else {
                         wordcolor[0][i].style.backgroundColor = 'white';
                         selekt = false;
+                        return -1;
                     }
                 }
             }
@@ -74,14 +78,13 @@ function clickProvColorWord() {
         oneColor = true;
     }
 
-    var colTrueAnswer = 0;
+    var colTrueAnswer = 16;
     for (var j = 1; j <= numberKoren; j++) {
         for (var i = 0; i < lenght; i++) {
             if (wordcolor[1][i] == j) {
-                if (wordcolor[2][i] != 'white') colTrueAnswer += 1;
                 if (wordcolor[2][i] != color[j]) {
                     wordcolor[0][i].style.backgroundColor = 'white';
-                    colTrueAnswer -= 1;
+                    colTrueAnswer--;
                     selekt = false;
                 }
             }
