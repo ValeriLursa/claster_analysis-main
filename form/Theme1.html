@@ -147,8 +147,11 @@
                         <label>компьютер</label>
                         <input class="such0" type="text">
                     </p>
+                    <button type="submit" class="btn btn-primary" onclick="checkProvPrilSuch(0)">Проверить</button>
                     <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(0)">Начать заново</button>
                     <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(0)">Показать правильный ответ</button>
+                    <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printSuch0">
+                    </table>
                 </td>
             </tr>
         </table>
@@ -169,8 +172,11 @@
                     <p><textarea class="form-control question0" rows="5"></textarea></p>
                     <p></p>
                     <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
+                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(0)">Проверить</button>
                     <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(0)">Начать заново</button>
                     <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(0)">Показать возможный ответ</button>
+                    <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion0">
+                    </table>
                 </td>
             </tr>
         </table>
@@ -190,8 +196,11 @@
                     <p class="select0">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
                     <p class="select0">5. Количество информации быстро |.</p>
                     <p class="select0">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
+                    <button type="submit" class="btn btn-primary" onclick="checkSelect(0)">Проверить</button>
                     <button type="submit" class="btn btn-primary" onclick="clickSelectNew(0)">Начать заново</button>
                     <button type="submit" class="btn btn-primary" onclick="trueAnswerSelect(0)">Показать правильный ответ</button>
+                    <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printSelect0">
+                    </table>
                 </td>
             </tr>
         </table>
@@ -220,8 +229,11 @@
                     <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>8. Что такое информатика?</p>
                     <p><textarea class="form-control question1" rows="5"></textarea></p>
+                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(1)">Проверить</button>
                     <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(1)">Начать заново</button>
                     <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(1)">Показать правильный ответ</button>
+                    <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion1">
+                    </table>
                 </td>
             </tr>
         </table>
@@ -235,8 +247,11 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
                     <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(2)">Проверить</button>
                     <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(2)">Начать заново</button>
                     <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(2)">Показать возможный ответ</button>
+                    <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion2">
+                    </table>
                 </td>
             </tr>
         </table>
@@ -250,8 +265,11 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
                     <p><textarea class="form-control question3" rows="5"></textarea></p>
+                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(3)">Проверить</button>
                     <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(3)">Начать заново</button>
                     <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(3)">Показать возможный ответ</button>
+                    <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion3">
+                    </table>
 
                 </td>
             </tr>
@@ -272,10 +290,21 @@
 </script>
 <script src="../lib/jquery/dist/jquery.min.js"></script>
 <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!--JS файлы для проверки и вывода результатов-->
 <script src="../js/form/scriptTestPrilSuch.js"></script>
 <script src="../js/form/scriptTestColor.js"></script>
 <script src="../js/form/scriptTestSelect.js"></script>
+<script src="../js/form/scriptTestMasClass.js"></script>
 <script src="../js/form/scriptProverka.js"></script>
+<!--JS файлы для кластеризации-->
+<script src="../js/klaster/Xk.js"></script>
+<script src="../js/klaster/maxMin.js"></script>
+<script src="../js/klaster/object_rationing.js"></script>
+<script src="../js/klaster/norm_x.js"></script>
+<script src="../js/klaster/norm_Xk.js"></script>
+<script src="../js/klaster/euc_distance.js"></script>
+<script src="../js/klaster/klaster.js"></script>
 
+<script src="../js/klaster/main.js"></script>
     </body>
 </html>
