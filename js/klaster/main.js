@@ -67,12 +67,17 @@ console.log("File main.js included")
 function getXk(col){
     var q = 0.1 //10% для отлично, 10% для средне, 80% плохо
     var Xk_var = []
-    if (col == 1){
+    if (col < 3){
         //если только одно поле для проверки, то два кластера
-        Xk_var = get(Xk_var, [1, 2])
-        Xk_var = get(Xk_var, [0, 10])
+        Xk_var = get(Xk_var, [1])
+        Xk_var = get(Xk_var, [0])
     }
-    else {
+    if (col == 3){
+        Xk_var = get(Xk_var, [3])
+        Xk_var = get(Xk_var, [2])
+        Xk_var = get(Xk_var, [1])
+    }
+    if (col > 3) {
         //если больше одного, три кластера
         var qq = col - (col*q/2) //центр первого кластера, положительного
         var qn = col / 6
@@ -97,13 +102,11 @@ function referenceData(col){
 function clustering(result, col){
     //Расчет эталонных значений
     var Xk_var = getXk(col)
-    console.log(Xk_var)
     //Просчет макс мин
     var max_var = max(Xk_var)
     var min_var = min(Xk_var)
-    //нормальизация эталонных данных
+    //нормализация эталонных данных
     var norm_Xk_var = norm_Xk(Xk_var, max_var, min_var, [])
-    console.log(result)
     //нормализация
     var norm_x_var = norm_x(result, max_var, min_var, [])
     //расстояние
@@ -111,10 +114,8 @@ function clustering(result, col){
     for (let i=0;i<norm_Xk_var.length;i++){
         euc_dist_var.push(euc_distance(norm_Xk_var[i], norm_x_var, 0))
     }
-    console.log(euc_dist_var)
     //определение класса
     var q = klaster(euc_dist_var)
-    console.log(q)
     //Сообщение
     var mes = messageClustering(col, q)
     return mes
