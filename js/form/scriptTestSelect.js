@@ -1,6 +1,6 @@
 var resultSelect = [];
 var resultClusteringSelect = [];
-var numberEndTry = 0;
+var numberEndTry = [];
 
 function checkSelect(s){
 	//проверка заданий с селектами
