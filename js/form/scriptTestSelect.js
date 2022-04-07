@@ -1,21 +1,20 @@
-var resultCheck = [];
-var resultClustering = [];
+var resultSelect = [];
+var resultClusteringSelect = [];
 var numberEndTry = 0;
 
 function checkSelect(s){
 	//проверка заданий с селектами
-	numberEndTry++;
+	numberEndTry[s]++;
 	var str = "sel" + s;
 	var ss = "select" + s;
 	var wordProv = document.getElementsByClassName(str);
 	len = wordProv.length
 	//проверка задания
-	resultCheck.push([clickSelect(wordProv, masProvSelect[s])])
+	resultSelect[s].push([clickSelect(wordProv, masProvSelect[s])])
 	//кластеризация
-	var rezultq = clustering(resultCheck[numberEndTry - 1], len);
+	var rezultq = clustering(resultSelect[s][numberEndTry[s] - 1], len);
 	//добавление резльтата кластеризации
-	resultClustering.push(rezultq)
-	console.log(rezultq)
+	resultClusteringSelect[s].push(rezultq)
 	//отметка правильности выполнения задания
 	if (rezultq == "Плохо") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-red";
 	if (rezultq == "Средне") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-yellow";
@@ -24,12 +23,12 @@ function checkSelect(s){
 	var print = "printSelect" + s
 	var printBlock = document.getElementById(print);
 	var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-	var len = resultCheck.length; 
+	var len = resultSelect[s].length; 
 	for (var i = 0; i < len; i++){
 		strColorWord += "<tr> <td>"
 		strColorWord += (i+1).toString() + "</td>"
-		strColorWord += "<td>" + resultCheck[i][0].toString() + "</td>"
-		strColorWord += "<td>" + resultClustering[i].toString() + "</td>"
+		strColorWord += "<td>" + resultSelect[s][i][0].toString() + "</td>"
+		strColorWord += "<td>" + resultClusteringSelect[s][i].toString() + "</td>"
 	}
 	printBlock.innerHTML = strColorWord
 }

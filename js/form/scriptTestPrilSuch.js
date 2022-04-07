@@ -1,32 +1,33 @@
 var resultSuch = [];
+var resultClusteringSuch = [];
 var numberEndTrySuch = [];
 
 function checkProvPrilSuch(s){
 	//проверка задания с кратким ответом
-	numberEndTrySuch++;
+	numberEndTrySuch[s]++;
 	var str = "srav" + s;
 	var ss = "such" + s;
 	var wordProv = document.getElementsByClassName(ss);
 	len = wordProv.length
 	//проверка задания
-	resultSuch.push([clickProvPrilSuch(wordProv, masShortAnswer[s]), numberEndTrySuch])
+	resultSuch[s].push([clickProvPrilSuch(wordProv, masShortAnswer[s])])
 	//кластеризация
-	var rezultq = 0;
+	var rezultq = clustering(resultSuch[s][numberEndTrySuch[s] - 1], len);
 	//добавление резльтата кластеризации
-	resultSuch[numberEndTrySuch - 1].push(rezultq)
-	if (resultSuch[numberEndTrySuch - 1][0] != len) {
-		document.getElementById(str).className += " w3-red";
-	} else document.getElementById(str).className += " w3-green";
+	resultClusteringSuch[s].push(rezultq)
+	if (rezultq == "Плохо") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-red";
+	if (rezultq == "Средне") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-yellow";
+	if (rezultq == "Хорошо") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-green";
 	//Вывод резльтатов всех попыток
 	var print = "printSuch" + s
 	var printBlock = document.getElementById(print);
 	var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-	var len = resultSuch.length; 
+	var len = resultSuch[s].length; 
 	for (var i = 0; i < len; i++){
 		strColorWord += "<tr> <td>"
-		strColorWord += resultSuch[i][1].toString() + "</td>"
-		strColorWord += "<td>" + resultSuch[i][0].toString() + "</td>"
-		strColorWord += "<td>" + resultSuch[i][2].toString() + "</td>"
+		strColorWord += (i+1).toString() + "</td>"
+		strColorWord += "<td>" + resultSuch[s][i][0].toString() + "</td>"
+		strColorWord += "<td>" + resultClusteringSuch[s][i].toString() + "</td>"
 	}
 	printBlock.innerHTML = strColorWord
 }

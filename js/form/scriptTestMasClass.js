@@ -1,32 +1,36 @@
 var resultMas = [];
-var numberEndTryMas = 0;
+var resultClusteringMas = [];
+var numberEndTryMas = [];
 
 function checkMasClass(s){
     //проверка заданий с развернутым ответом
-    numberEndTryMas++;
+    numberEndTryMas[s]++;
+    console.log()
     str = "prov" + s;
     ss = "question" + s;
     var wordProv = document.getElementsByClassName(ss);
-    len = wordProv.length
+    var len = wordProv.length
     //проверка задания
-	resultMas.push([provMasClass(wordProv), numberEndTryMas])
+	resultMas[s].push([provMasClass(wordProv)])
+    console.log(resultMas[s][numberEndTryMas[s] - 1])
     //кластеризация
-	var rezultq = 0;
+	var rezultq = clustering(resultMas[s][numberEndTryMas[s] - 1], len);
 	//добавление резльтата кластеризации
-	resultMas[numberEndTryMas - 1].push(rezultq)
-    if (resultMas[numberEndTryMas - 1][0] != len) {
-        document.getElementById(str).className += " w3-red";
-    } else document.getElementById(str).className += " w3-green";
+	resultClusteringMas[s].push(rezultq)
+    //отметка правильности выполнения задания
+	if (rezultq == "Плохо") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-red";
+	if (rezultq == "Средне") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-yellow";
+	if (rezultq == "Хорошо") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-green";
     //Вывод резльтатов всех попыток
 	var print = "printQuestion" + s
 	var printBlock = document.getElementById(print);
 	var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-	var len = resultMas.length; 
+	len = resultMas[s].length; 
 	for (var i = 0; i < len; i++){
 		strColorWord += "<tr> <td>"
-		strColorWord += resultMas[i][1].toString() + "</td>"
-		strColorWord += "<td>" + resultMas[i][0].toString() + "</td>"
-		strColorWord += "<td>" + resultMas[i][2].toString() + "</td>"
+		strColorWord += (i+1).toString() + "</td>"
+		strColorWord += "<td>" + resultMas[s][i][0].toString() + "</td>"
+		strColorWord += "<td>" + resultClusteringMas[s][i].toString() + "</td>"
 	}
 	printBlock.innerHTML = strColorWord
 }
