@@ -22,7 +22,8 @@
     background-color: inherit;
     text-align: center;
     cursor: pointer;
-    white-space: nowrap
+    white-space: nowrap;
+    font-size: x-large
 }
 .w3-btn, .w3-button {
     -webkit-touch-callout: none;
@@ -33,14 +34,14 @@
     user-select: none
 }
 
-    .w3-disabled, .w3-btn:disabled, .w3-button:disabled {
-        cursor: not-allowed;
-        opacity: 0.3
-    }
+.w3-disabled, .w3-btn:disabled, .w3-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3
+}
 
-        .w3-disabled *, :disabled * {
-            pointer-events: none
-        }
+.w3-disabled *, :disabled * {
+    pointer-events: none
+}
 
 
 .w3-dropdown-hover:hover > .w3-button:first-child, .w3-dropdown-click:hover > .w3-button:first-child {

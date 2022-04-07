@@ -34,6 +34,7 @@ div.courses {
 
 li {
     list-style: none;
+    width : 90%;
 }
 
 ul.my_padding{
@@ -64,9 +65,11 @@ input[type=text], input[type=password], select {
 
 textarea {
     font-size: x-large !important;
+    width : 90%;
+    resize: vertical;
 }
 .text_number_zadanie {
-    font-size: large;
+    font-size: x-large;
     text-align: left;
     font-weight: 600;
 }
@@ -77,10 +80,10 @@ textarea {
     text-indent: 2em;
 }
 body {
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
+    min-width: 95%;
+    max-width: 95%;
+    min-height: 95%;
+    max-height: 95%;
 }
 .taskTab{
     padding: 5% 5% 5% 5%;
@@ -96,7 +99,7 @@ body {
 }
 
 table{
-    width : 100%;
+    width : 98%;
 }
 
 td{

@@ -16,18 +16,18 @@
 <script src="../js/form/scriptVhod.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: сообщение сведений об информации, её видах и
     способах использования.</p>
-
+<p></p>
 <nav class="w3-bar w3-black container text_number_zadanie">
-    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
-    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
-    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
-    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
-    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
-    <button class="w3-bar-item w3-button tablink" id="select0" onclick="openTask('Task6')">Задание 6</button>
-    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
-    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
-    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
-    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+    <button class=" w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class=" w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
+    <button class=" w3-button tablink" id="select0" onclick="openTask('Task6')">Задание 6</button>
+    <button class=" w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
+    <button class=" w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
+    <button class=" w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
+    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="proverka()">Проверка</button>
 </nav>
     <div class="task" id="Task1">
         <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, переведите их на свой язык:</p>
@@ -52,7 +52,7 @@
             <li>сохранение <input class="slovo" type="text"></li>
 
         </ul>
-        <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Добавить в словарь</button>
+        <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="clickProvColorWordNew()">Добавить в словарь</button>
     </div>
     <div id="Task2" class=" task" style="display:none">
         <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
@@ -89,9 +89,9 @@
                 <td></td>
             </tr>
         </table><br>
-        <button type="submit" class="btn btn-primary" onclick="checkColorWord()">Проверка</button><br />
-        <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button><br />
-        <button type="submit" class="btn btn-primary" onclick="trueAnswerColor()">Показать правильный ответ</button>
+        <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkColorWord()">Проверка</button><br />
+        <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="clickProvColorWordNew()">Начать заново</button><br />
+        <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerColor()">Показать правильный ответ</button>
         <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printBlock">
         </table>
     </div>
@@ -147,9 +147,9 @@
                         <label>компьютер</label>
                         <input class="such0" type="text">
                     </p>
-                    <button type="submit" class="btn btn-primary" onclick="checkProvPrilSuch(0)">Проверить</button>
-                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(0)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(0)">Показать правильный ответ</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkProvPrilSuch(0)">Проверить</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="clickProvPrilSuchMew(0)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerSrav(0)">Показать правильный ответ</button>
                     <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printSuch0">
                     </table>
                 </td>
@@ -172,9 +172,9 @@
                     <p><textarea class="form-control question0" rows="5"></textarea></p>
                     <p></p>
                     <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
-                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(0)">Проверить</button>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(0)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(0)">Показать возможный ответ</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkMasClass(0)">Проверить</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="detailedAnswerNew(0)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerDetailedAnswer(0)">Показать возможный ответ</button>
                     <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion0">
                     </table>
                 </td>
@@ -196,9 +196,9 @@
                     <p class="select0">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
                     <p class="select0">5. Количество информации быстро |.</p>
                     <p class="select0">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
-                    <button type="submit" class="btn btn-primary" onclick="checkSelect(0)">Проверить</button>
-                    <button type="submit" class="btn btn-primary" onclick="clickSelectNew(0)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerSelect(0)">Показать правильный ответ</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkSelect(0)">Проверить</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="clickSelectNew(0)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerSelect(0)">Показать правильный ответ</button>
                     <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printSelect0">
                     </table>
                 </td>
@@ -229,9 +229,9 @@
                     <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>8. Что такое информатика?</p>
                     <p><textarea class="form-control question1" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(1)">Проверить</button>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(1)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(1)">Показать правильный ответ</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkMasClass(1)">Проверить</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="detailedAnswerNew(1)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerDetailedAnswer(1)">Показать правильный ответ</button>
                     <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion1">
                     </table>
                 </td>
@@ -247,9 +247,9 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
                     <p><textarea class="form-control question2" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(2)">Проверить</button>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(2)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(2)">Показать возможный ответ</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkMasClass(2)">Проверить</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="detailedAnswerNew(2)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerDetailedAnswer(2)">Показать возможный ответ</button>
                     <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion2">
                     </table>
                 </td>
@@ -265,9 +265,9 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
                     <p><textarea class="form-control question3" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="checkMasClass(3)">Проверить</button>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(3)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(3)">Показать возможный ответ</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="checkMasClass(3)">Проверить</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="detailedAnswerNew(3)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="trueAnswerDetailedAnswer(3)">Показать возможный ответ</button>
                     <table alight="center" class="site_padding size_text_courses not_select_text text_test" id="printQuestion3">
                     </table>
 
@@ -275,7 +275,8 @@
             </tr>
         </table>
     </div>
-
+    <a id="back2Top" title="Back to top" href="#">&#10148;</a>
+    <a id="back2Top2" title="Back to top" href="#">&#9668;</a>
 <script>
     function openTask(tabName) {
         if (globalFlagOnload) { 
