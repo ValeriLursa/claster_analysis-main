@@ -6,10 +6,9 @@ function get(Xk, mas){
 }
 
 function Xk(Xk_var){
-    Xk_var.push([100, 0, 0]);
-    Xk_var.push([74.5, 3, 3]);
-    Xk_var.push([25, 5, 5]);
-    Xk_var.push([0, 10, 10]);
+    Xk_var.push([6]);
+    Xk_var.push([4]);
+    Xk_var.push([1.16]);
     return Xk_var;
 }
 

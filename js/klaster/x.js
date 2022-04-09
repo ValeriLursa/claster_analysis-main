@@ -1,7 +1,5 @@
-function x(mas){
-    mas.push(4)
-    mas.push(10)
-    mas.push(10)
+function x(mas, el){
+    mas.push(el)
     return mas
 }
 

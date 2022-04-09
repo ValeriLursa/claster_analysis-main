@@ -16,4 +16,4 @@ function printForm(e){
 }
  
 var printButton = document.search.print;
-printButton.addEventListener("click", printForm);
+//printButton.addEventListener("click", printForm);

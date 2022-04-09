@@ -42,23 +42,34 @@ function main(){
     //ввод данных об успеваемости
         //одномерный массив успеваемости одного студента по всем параметрам
     var flag_x = 0;
-    var x_var;
-    if (flag_x == 0){
-        x_var = x([]);
-        str += write_mas("Входные значения:", x_var);
+    var x_var = [];
+    var test_el = [7,3,7,1,5,2]
+    var sum = 0;
+    var kol = 1;
+    for (var i = 0; i < test_el.length; i++){
+        if (flag_x == 0){
+            sum += test_el[i]
+            var sr = sum /kol
+            console.log(sr)
+            x_var = [sr];
+            str += write_mas("Входные значения:", x_var);
+            kol++
+        }
+        //нормализация
+        var norm_x_var = norm_x(x_var, max_var, min_var, [])
+        str += write_mas("Нормированные значения:", norm_x_var)
+        //расстояние
+        var euc_dist_var = []
+        for (let i=0;i<norm_Xk_var.length;i++){
+            euc_dist_var.push(euc_distance(norm_Xk_var[i], norm_x_var, 0))
+        }
+        str += write_mas("Расстояния:", euc_dist_var)
+        //определение класса
+        q = klaster(euc_dist_var)
+        str += write_mas("Принадлежность к классу: ", q)
+        
     }
-    //нормализация
-    var norm_x_var = norm_x(x_var, max_var, min_var, [])
-    str += write_mas("Нормированные значения:", norm_x_var)
-    //расстояние
-    var euc_dist_var = []
-    for (let i=0;i<norm_Xk_var.length;i++){
-        euc_dist_var.push(euc_distance(norm_Xk_var[i], norm_x_var, 0))
-    }
-    //определение класса
-    q = klaster(euc_dist_var)
-    str += write_mas("Принадлежность к классу: ", q)
-    return str
+    document.write(str)
 }
 
 console.log("File main.js included")
@@ -102,6 +113,7 @@ function referenceData(col){
 function clustering(result, col){
     //Расчет эталонных значений
     var Xk_var = getXk(col)
+    console.log(Xk_var)
     //Просчет макс мин
     var max_var = max(Xk_var)
     var min_var = min(Xk_var)
