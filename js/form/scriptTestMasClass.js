@@ -5,14 +5,12 @@ var numberEndTryMas = [];
 function checkMasClass(s){
     //проверка заданий с развернутым ответом
     numberEndTryMas[s]++;
-    console.log()
     str = "prov" + s;
     ss = "question" + s;
     var wordProv = document.getElementsByClassName(ss);
     var len = wordProv.length
     //проверка задания
 	resultMas[s].push([provMasClass(wordProv)])
-    console.log(resultMas[s][numberEndTryMas[s] - 1])
     //кластеризация
 	var rezultq = clustering(resultMas[s][numberEndTryMas[s] - 1], len);
 	//добавление резльтата кластеризации
