@@ -63,7 +63,7 @@ function result(){
         }
         strColorWord += "</tr>"
     }
-    printBlock.innerHTML = strColorWord + "<p>" + sr + "<p>Сумма: " + resultCourse
+    printBlock.innerHTML = strColorWord + "<p>" + sr + "<p>Сумма: " + resultCourse + " из " + resSum
     resultCourse2.length = 0;
 }
 
