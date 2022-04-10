@@ -109,10 +109,12 @@ table{
 
 td{
     width : 50%;
+    padding: 5px;
 }
 
 .td_3{
     width : 30%;
+    margin: 5px
 }
 
 /*@media (max-width:992px) {
