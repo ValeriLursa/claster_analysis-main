@@ -23,7 +23,8 @@
     text-align: center;
     cursor: pointer;
     white-space: nowrap;
-    font-size: x-large
+    font-size: x-large;
+    margin: 5px
 }
 .w3-btn, .w3-button {
     -webkit-touch-callout: none;
