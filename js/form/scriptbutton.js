@@ -1,6 +1,7 @@
 var heightH = 0
 
 jQuery(document).ready(function () {
+    $('#back2Top2').fadeIn();
     $("html, body").animate({ scrollTop: 0 }, "slow");
     $(window).scroll(function () {
         var height = $(window).scrollTop();
