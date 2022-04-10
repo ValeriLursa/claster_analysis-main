@@ -33,4 +33,4 @@ function t(chars, from = 0, to = 0){
     return plac
 }
 
-console.log(t(["A","B","C","D"]))
+//console.log(t(["A","B","C","D"]))
