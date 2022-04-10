@@ -112,6 +112,14 @@ td{
     padding: 5px;
 }
 
+.padding{
+    padding: 5px;
+}
+
+.margin{
+    margin: 5px;
+}
+
 .td_3{
     width : 30%;
     margin: 5px

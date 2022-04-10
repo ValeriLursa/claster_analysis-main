@@ -82,11 +82,11 @@ function clickProvColorWord() {
                     if (flagColor) {
                         color[j] = wordcolor[2][i];
                         oneColor = false;
-                        wordcolor[0][i].className = 'td_3'
+                        wordcolor[0][i].className = 'td_3 button'
                     }
                     else {
                         wordcolor[0][i].style.backgroundColor = 'white';
-                        wordcolor[0][i].className = 'border_table td_3';
+                        wordcolor[0][i].className = 'border_table td_3 button';
                         selekt = false;
                         return -1;
                     }
@@ -103,12 +103,12 @@ function clickProvColorWord() {
             if (wordcolor[1][i] == j) {
                 if (wordcolor[2][i] != color[j]) {
                     wordcolor[0][i].style.backgroundColor = 'white';
-                    wordcolor[0][i].className = 'border_table td_3';
+                    wordcolor[0][i].className = 'border_table td_3 button';
                     colTrueAnswer--;
                     selekt = false;
                 }
                 else {
-                    wordcolor[0][i].className = 'td_3'
+                    wordcolor[0][i].className = 'td_3 button'
                 }
             }
         }
@@ -120,7 +120,7 @@ function clickProvColorWord() {
 function clickProvColorWordNew() {
     for (var i = 0; i < this.lenght; i++) {
         this.wordcolor[2][i] = undefined;
-        wordcolor[0][i].className = 'td_3'
+        wordcolor[0][i].className = 'td_3 button'
         colorWhite(i);
     }
     console.log("Отчситка полей для задачи с цветами выполнена");
@@ -145,7 +145,7 @@ function trueAnswerColor() {
             for (var i = 0; i < lenght; i++) {
                 if (wordcolor[1][i] == j) {
                     wordcolor[0][i].style.backgroundColor = color[j];
-                    wordcolor[0][i].className = 'td_3'
+                    wordcolor[0][i].className = 'td_3 button'
                 }
             }
         }
