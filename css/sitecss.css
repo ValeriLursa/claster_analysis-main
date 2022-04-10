@@ -155,16 +155,16 @@ td{
 }
 @media (max-width:576px) {
     .text_zadanie {
-        font-size: x-large !important;
+        font-size: medium !important;
     }
 
     input[type=text], input[type=password],  select {
-        font-size: x-large;
+        font-size: large;
     }
     textarea {
-        font-size: x-large !important;
+        font-size: large !important;
     }
     .text_test {
-        font-size: x-large;
+        font-size: large;
     }
 }
