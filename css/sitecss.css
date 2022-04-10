@@ -13,7 +13,7 @@ p.size_text_course {
     text-align: left;
 }
 p.size_title_course {
-    font-size: x-large;
+    font-size: xx-large;
     text-align: left;
 }
 .site_padding {
@@ -155,16 +155,16 @@ td{
 }
 @media (max-width:576px) {
     .text_zadanie {
-        font-size: medium !important;
+        font-size: x-large !important;
     }
 
     input[type=text], input[type=password],  select {
-        font-size: large;
+        font-size: x-large;
     }
     textarea {
-        font-size: large !important;
+        font-size: x-large !important;
     }
     .text_test {
-        font-size: large;
+        font-size: x-large;
     }
 }
