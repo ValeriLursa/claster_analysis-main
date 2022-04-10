@@ -53,6 +53,10 @@ ul.my_padding{
     width: 100%
 }
 
+.text_vertical_align{
+    vertical-align: top
+}
+
 input[type=text], input[type=password], select {
     width: 100%;
     padding: 12px 20px;
