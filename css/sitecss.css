@@ -78,6 +78,13 @@ textarea {
     text-align: left;
     font-weight: 600;
 }
+
+.text_example {
+    font-size: x-large;
+    text-align: left;
+    text-indent: 2em;
+}
+
 .text_zadanie {
     font-size: x-large;
     text-align: left;
@@ -118,6 +125,10 @@ td{
 
 .margin{
     margin: 5px;
+}
+
+.indent{
+    text-indent: 2em;
 }
 
 .td_3{

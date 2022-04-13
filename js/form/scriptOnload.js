@@ -49,6 +49,7 @@ window.onload = function () {
 	}
 	console.log("Задание с цветом задано");
 	numberKoren = Math.max.apply(null, dataProvColor);
+	startColor()
 	//вывод задания с селектом на страницу
 	kolProvSelect = masVhodSelect.length;
 	for (var i = 0; i < kolProvSelect; i++) {

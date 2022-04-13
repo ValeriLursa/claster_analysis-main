@@ -5,6 +5,7 @@ var resultColor = [];
 var resultClusteringColor = [];
 var numberEndTryColor = 0;
 var lenColor = 0;
+var colFalse = 0;
 
 function colorWord() {
 
@@ -41,9 +42,17 @@ function checkColorWord(){
         //добавление резльтата кластеризации
 	    resultClusteringColor.push(rezultq)
         //отметка правильности выполнения задания
-	    if (rezultq == "Плохо") document.getElementById("color").className = "w3-bar-item w3-button tablink w3-red";
-	    if (rezultq == "Средне") document.getElementById("color").className = "w3-bar-item w3-button tablink w3-yellow";
-	    if (rezultq == "Хорошо") document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
+	    if (rezultq == "Плохо") {
+            document.getElementById("color").className = "w3-bar-item w3-button tablink w3-red";
+            colFalse++;
+        }
+	    if (rezultq == "Средне") {
+            document.getElementById("color").className = "w3-bar-item w3-button tablink w3-yellow";
+        }
+	    if (rezultq == "Хорошо") {
+            document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
+            colFalse--;
+        }
         var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
         var len = resultColor.length; 
         for (var i = 0; i < len; i++){
@@ -55,8 +64,24 @@ function checkColorWord(){
         //pElement.innerHTML = str + "</tr>"
         //printBlock.appendChild(pElement);
         printBlock.innerHTML = strColorWord
+        if (colFalse == 2) rootColor(0, 5)
     }
     numberEndTryColor++
+}
+
+//Задача первых слов нужными цветами 
+function startColor(){
+    for (var j = 0; j < numberKoren; j++){
+        var s = "word" + j;
+        document.getElementById(s).style.backgroundColor = colorBD[j+1]
+    }
+}
+
+function rootColor(start, end){
+    for (var i = start; i <= end; i++){
+        var s = "word" + i
+        document.getElementById(s).innerHTML = rootArray[i]
+    }
 }
 
 function clickProvColorWord() { 

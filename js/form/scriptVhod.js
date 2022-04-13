@@ -7,6 +7,7 @@ var dataProvShortAnswer0 = [];
 var dataProvShortAnswer1 = [];
 var dataProvShortAnswer2 = [];
 var dataProvShortAnswer3 = [];
+var rootArray = [];
 
 
 
@@ -28,6 +29,7 @@ function vhod(numberTest) {
 			masVhodSelect = [dataVhodSelect];
 			//входные данные для проверки
 			dataProvColor = [1, 2, 3, 4, 5, 6, 4, 3, 1, 5, 6, 4, 3, 1, 2, 3];
+			rootArray = ['<b>информ</b> ация', 'с <b>бор</b>', 'со <b>xран</b> ять', 'об <b>рабат</b> ывать', '<b>реш</b> ать', 'вы <b>числ</b> ение']
 			shortAnswer0 = [["научная"], ["техническая"], ["политическая"], ["экономическая"], ["военная"], ["математические"], ["вычислительных"], ["машинная"], ["электронно"], ["компьютерная"]];
 			masShortAnswer = [shortAnswer0];
 			for (var i = 0; i< masShortAnswer.length; i++){
