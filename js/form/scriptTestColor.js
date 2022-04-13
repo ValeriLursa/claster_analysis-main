@@ -14,7 +14,6 @@ function colorWord() {
     id1 = elem.id;
 
     var word = document.getElementById(id1);
-
     if (flag < numberKoren) {
         word.style.backgroundColor = colorBD[flag];
         flag++;
@@ -51,7 +50,7 @@ function checkColorWord(){
         }
 	    if (rezultq == "Хорошо") {
             document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
-            colFalse--;
+            rootTrueColor();
         }
         var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
         var len = resultColor.length; 
@@ -65,6 +64,7 @@ function checkColorWord(){
         //printBlock.appendChild(pElement);
         printBlock.innerHTML = strColorWord
         if (colFalse == 2) rootColor(0, 5)
+        if (colFalse > 2) rootColor(0, 15)
     }
     numberEndTryColor++
 }
@@ -80,8 +80,25 @@ function startColor(){
 function rootColor(start, end){
     for (var i = start; i <= end; i++){
         var s = "word" + i
-        document.getElementById(s).innerHTML = rootArray[i]
+        var word = document.getElementById(s)
+        if ((0 <= i) && (i <= 5)) {
+            word.innerHTML = rootArray[i]
+        }
+        else 
+            if (word.style.backgroundColor == 'white') {
+                word.innerHTML = rootArray[i]
+            }
+            else word.innerHTML = startWordColor[i]
     }
+}
+
+function rootTrueColor(){
+    for (var i = 0; i < this.lenght; i++){
+        var s = "word" + i
+        var word = document.getElementById(s)
+        word.innerHTML = startWordColor[i]
+    }
+    colFalse = 0;
 }
 
 function clickProvColorWord() { 
@@ -143,10 +160,15 @@ function clickProvColorWord() {
 }
 
 function clickProvColorWordNew() {
-    for (var i = 0; i < this.lenght; i++) {
+    for (var i = 6; i < this.lenght; i++) {
         this.wordcolor[2][i] = undefined;
         wordcolor[0][i].className = 'td_3 button'
         colorWhite(i);
+    }
+    for (var i = 0; i< this.lenght; i++){
+        var s = "word" + i
+        var word = document.getElementById(s)
+        word.innerHTML = startWordColor[i]
     }
     console.log("Отчситка полей для задачи с цветами выполнена");
 }
