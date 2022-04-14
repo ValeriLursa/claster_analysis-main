@@ -26,7 +26,7 @@ function provColor(func, ev) {
 
 function checkResult(number, masRes, masClast){
     if (masRes === undefined) {
-        resultCourse2.push([number, 0, "Нет прохождений"])
+        resultCourse2.push([number, 0, "Не пройдено"])
         resultCourse += 0
     }
     else {
