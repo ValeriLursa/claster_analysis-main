@@ -15,9 +15,9 @@ function checkProvPrilSuch(s){
 	var rezultq = clustering(resultSuch[s][numberEndTrySuch[s] - 1], len);
 	//добавление резльтата кластеризации
 	resultClusteringSuch[s].push(rezultq)
-	if (rezultq == "Плохо") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-red";
-	if (rezultq == "Средне") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-yellow";
-	if (rezultq == "Хорошо") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-green";
+	if (rezultq == "Еще остались ошибки. Сделай еще раз") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-red";
+	if (rezultq == "Лучше сделать задание еще раз") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-yellow";
+	if (rezultq == "Переходи к следующему заданию") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-green";
 	//Вывод резльтатов всех попыток
 	var print = "printSuch" + s
 	var printBlock = document.getElementById(print);

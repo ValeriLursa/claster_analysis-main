@@ -48,8 +48,7 @@ function result(){
     checkResult(9, resultMas[3][numberEndTryMas[3]-1], resultClusteringMas[3][numberEndTryMas[3]-1])
     var len = numTextZad; 
     var sr;
-    console.log(resultCourse)
-    if (resultCourse == 0) sr = "Плохо"
+    if (resultCourse == 0) sr = "Еще остались ошибки. Сделай еще раз"
     else sr = clustering([resultCourse], resSum);
     console.log(sr)
     //var q = 

@@ -41,14 +41,14 @@ function checkColorWord(){
         //добавление резльтата кластеризации
 	    resultClusteringColor.push(rezultq)
         //отметка правильности выполнения задания
-	    if (rezultq == "Плохо") {
+	    if (rezultq == "Еще остались ошибки. Сделай еще раз") {
             document.getElementById("color").className = "w3-bar-item w3-button tablink w3-red";
             colFalse++;
         }
-	    if (rezultq == "Средне") {
+	    if (rezultq == "Лучше сделать задание еще раз") {
             document.getElementById("color").className = "w3-bar-item w3-button tablink w3-yellow";
         }
-	    if (rezultq == "Хорошо") {
+	    if (rezultq == "ХороПереходи к следующему заданиюшо") {
             document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
             rootTrueColor();
         }

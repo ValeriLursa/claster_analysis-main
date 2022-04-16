@@ -136,15 +136,15 @@ function clustering(result, col){
 function messageClustering(col, clust){
     if (col == 1){
         switch(clust){
-            case 1: return "Хорошо"
-            case 2: return "Плохо"
+            case 1: return "Переходи к следующему заданию"
+            case 2: return "Еще остались ошибки. Сделай еще раз"
         }
     }
     else{
         switch(clust){
-            case 1: return "Хорошо"
-            case 2: return "Средне"
-            case 3: return "Плохо"
+            case 1: return "Переходи к следующему заданию"
+            case 2: return "Лучше сделать задание еще раз"
+            case 3: return "Еще остались ошибки. Сделай еще раз"
         }
     }
 }

@@ -16,9 +16,9 @@ function checkSelect(s){
 	//добавление резльтата кластеризации
 	resultClusteringSelect[s].push(rezultq)
 	//отметка правильности выполнения задания
-	if (rezultq == "Плохо") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-red";
-	if (rezultq == "Средне") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-yellow";
-	if (rezultq == "Хорошо") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-green";
+	if (rezultq == "Еще остались ошибки. Сделай еще раз") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-red";
+	if (rezultq == "Лучше сделать задание еще раз") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-yellow";
+	if (rezultq == "Переходи к следующему заданию") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-green";
 	//Вывод резльтатов всех попыток
 	var print = "printSelect" + s
 	var printBlock = document.getElementById(print);
