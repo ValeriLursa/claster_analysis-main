@@ -1,0 +1,26 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node saveData.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ValeriLursa/claster_analysis-main.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ValeriLursa/claster_analysis-main/issues"
+  },
+  "homepage": "https://github.com/ValeriLursa/claster_analysis-main#readme",
+  "dependencies": {
+    "pg": "^8.7.3"
+  }
+}

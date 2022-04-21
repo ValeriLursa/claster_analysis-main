@@ -50,9 +50,6 @@ function result(){
     var sr;
     if (resultCourse == 0) sr = "Еще остались ошибки. Сделай еще раз"
     else sr = clustering([resultCourse], resSum);
-    console.log(sr)
-    //var q = 
-    //var len = 1;
     for (var i = 0; i < len; i++){
         strColorWord += "<tr>"
         for (var j = 0; j < 3; j++)
