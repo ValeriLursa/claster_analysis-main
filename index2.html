@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"  initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id = 'text'><br><br>
+    <button onclick="deleteAttempt()">Удалить</button>
+    <button onclick="creatAttempt()">Добавить</button>
+    <ol id="ol"></ol>
+    <script>
+        const input = document.getElementById('text');
+        readUser()
+        async function readUser(){
+            try{
+                const ol = document.getElementById("ol");
+                const result = await fetch("http://localhost:8080/attempt", {method:"GET"})
+                const users = await result.json();
+                users.forEach(t => {
+                    const li = document.createElement("li")
+                    li.textContent = t.result //поля таблицы в бд
+                    li.id = t.id; //поля в таблицы бд
+                    ol.appendChild(li)
+                });
+                console.log("true readUser")
+            }
+            catch(e){
+                console.log(false)
+            }
+        }
+
+        async function creatAttempt(){
+            try{
+                const jsonRequest = {}
+                jsonRequest.text = input.value
+                const result = await fetch("http://localhost:8080/attempt", {method:"POST", headers: {"content-type" : "application/json"}, body: JSON.stringify(jsonRequest)})
+                const success = await result.json();
+                console.log("true creatAttempt")
+            }
+            catch(e){
+                console.log(false)
+            }
+        }
+
+        async function deleteAttempt(){
+            try{
+                const jsonRequest = {}
+                jsonRequest.text = input.value
+                const result = await fetch("http://localhost:8080/attempt", {method:"delete", headers: {"content-type" : "application/json"}, body: JSON.stringify(jsonRequest)})
+                const success = await result.json();
+                console.log("true deleteAttempt")
+            }
+            catch(e){
+                console.log(false)
+            }
+        }
+    </script>
+</body>
+</html>

@@ -2,11 +2,15 @@
   "name": "package",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "directories": {
     "lib": "lib",
-    "test": "test"
+    "test": "test",
+    "css": "css",
+    "form": "form",
+    "js": "js"
   },
+  "type": "module",
   "scripts": {
     "test": "node saveData.js"
   },
