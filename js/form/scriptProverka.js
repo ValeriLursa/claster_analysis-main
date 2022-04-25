@@ -3,6 +3,11 @@ var resultClusteringCourse = [];
 var resultCourse2 = [];
 var flagOneColor = false;
 var resSum = 46;
+var resultJSON = []
+
+function sayHello() {
+    console.log("Hello METANIT.COM");
+}
 
 function proverka() {
     if (globalFlagOnload) {
@@ -28,10 +33,12 @@ function checkResult(number, masRes, masClast){
     if (masRes === undefined) {
         resultCourse2.push([number, 0, "Не пройдено"])
         resultCourse += 0
+        resultJSON.push({"id": number, "result" : 0,"hint" : "Не пройдено"});
     }
     else {
         resultCourse2.push([number, masRes, masClast])
         resultCourse += Number(masRes)
+        resultJSON.push({"id": number, "result" : masRes,"hint" : masClast});
     }
 }
 
@@ -61,6 +68,55 @@ function result(){
     }
     printBlock.innerHTML = strColorWord + "<p>" + sr + "<p>Сумма: " + resultCourse + " из " + resSum
     resultCourse2.length = 0;
+    var test = document.getElementById("test")
+    fgetAttempt(test)
+    //selectUser()
+    const postAttempt = {}
+    postAttempt.result = resultJSON
+    //fpostAttempt(postAttempt)
+    const deleteId = {}
+    deleteId.id = 1
+    //deleteAttempt(deleteId)
+}
+
+function fgetAttempt(test){
+    fetch('/attempt')
+    .then(response => response.json())
+    .then(responseText => {
+        var qstr = ""
+        responseText[0].result.forEach(t=> qstr += "<p>" + t.id +" " + t.result +" " + t.hint+"</p>")
+        test.innerHTML = qstr
+        //console.log(responseText[0].result)
+    });
+}
+
+function fpostAttempt(text){
+    fetch('/attempt', {
+        method: "POST",
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify(text)
+    })
+    .then(response => response.text())
+    .then(responseText => console.log(responseText))
+}
+
+function selectUser(){
+    fetch('/user')
+    .then(response => response.json())
+    .then(responseText => {
+        test.innerText = responseText[0]["id"]
+    });
+}
+
+function deleteAttempt(id){
+    console.log(id)
+    fetch('/attempt', {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify(id)
+    })
+    .then(response => response.text())
+    .then(responseText => console.log(responseText))
 }
 
 function allAnswer(){
