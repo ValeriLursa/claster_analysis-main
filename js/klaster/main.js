@@ -113,7 +113,6 @@ function referenceData(col){
 function clustering(result, col){
     //Расчет эталонных значений
     var Xk_var = getXk(col)
-    console.log(Xk_var)
     //Просчет макс мин
     var max_var = max(Xk_var)
     var min_var = min(Xk_var)
