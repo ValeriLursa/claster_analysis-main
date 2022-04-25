@@ -48,7 +48,7 @@ function checkColorWord(){
 	    if (rezultq == "Лучше сделать задание еще раз") {
             document.getElementById("color").className = "w3-bar-item w3-button tablink w3-yellow";
         }
-	    if (rezultq == "ХороПереходи к следующему заданиюшо") {
+	    if (rezultq == "Переходи к следующему заданию") {
             document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
             rootTrueColor();
         }
