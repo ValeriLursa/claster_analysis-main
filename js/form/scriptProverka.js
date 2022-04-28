@@ -42,14 +42,14 @@ function checkResult(number, masRes, masClast){
     }
 }
 
-function result(){
+async function result(){
     var printBlock = document.getElementById("result");
     var strColorWord = "<tr><td class='td_3'>Номер задания</td><td class='td_3'>Результат</td><td class='td_3'>Подсказка</td></tr>"
     resultCourse = 0;
-    checkResult(2, resultColor[numberEndTryColor-1], resultClusteringColor[numberEndTryColor-1])
+    checkResult(2, resultColor.resultC[numberEndTryColor-1], resultColor.resultClusteringColor[numberEndTryColor-1])
     checkResult(4, resultSuch[0][numberEndTrySuch[0]-1], resultClusteringSuch[0][numberEndTrySuch[0]-1])
     checkResult(5, resultMas[0][numberEndTryMas[0]-1], resultClusteringMas[0][numberEndTryMas[0]-1])
-    checkResult(6, resultSelect[0][numberEndTry[0]-1], resultClusteringSelect[0][numberEndTry[0]-1])
+    checkResult(6, resultSelectArray[0].resultS[numberEndTry[0]-1], resultSelectArray[0].resultClusteringSelect[numberEndTry[0]-1])
     checkResult(7, resultMas[1][numberEndTryMas[1]-1], resultClusteringMas[1][numberEndTryMas[1]-1])
     checkResult(8, resultMas[2][numberEndTryMas[2]-1], resultClusteringMas[2][numberEndTryMas[2]-1])
     checkResult(9, resultMas[3][numberEndTryMas[3]-1], resultClusteringMas[3][numberEndTryMas[3]-1])
@@ -68,55 +68,12 @@ function result(){
     }
     printBlock.innerHTML = strColorWord + "<p>" + sr + "<p>Сумма: " + resultCourse + " из " + resSum
     resultCourse2.length = 0;
-    var test = document.getElementById("test")
-    fgetAttempt(test)
+    //fgetAttempt(test)
     //selectUser()
-    const postAttempt = {}
-    postAttempt.result = resultJSON
-    //fpostAttempt(postAttempt)
+    
     const deleteId = {}
     deleteId.id = 1
     //deleteAttempt(deleteId)
-}
-
-function fgetAttempt(test){
-    fetch('/attempt')
-    .then(response => response.json())
-    .then(responseText => {
-        var qstr = ""
-        responseText[0].result.forEach(t=> qstr += "<p>" + t.id +" " + t.result +" " + t.hint+"</p>")
-        test.innerHTML = qstr
-        //console.log(responseText[0].result)
-    });
-}
-
-function fpostAttempt(text){
-    fetch('/attempt', {
-        method: "POST",
-        headers: {"content-type": "application/json"},
-        body: JSON.stringify(text)
-    })
-    .then(response => response.text())
-    .then(responseText => console.log(responseText))
-}
-
-function selectUser(){
-    fetch('/user')
-    .then(response => response.json())
-    .then(responseText => {
-        test.innerText = responseText[0]["id"]
-    });
-}
-
-function deleteAttempt(id){
-    console.log(id)
-    fetch('/attempt', {
-        method: "DELETE",
-        headers: {"Content-Type": "application/json" },
-        body: JSON.stringify(id)
-    })
-    .then(response => response.text())
-    .then(responseText => console.log(responseText))
 }
 
 function allAnswer(){
@@ -142,4 +99,30 @@ function allAnswer(){
     checkMasClass(3)
     //
     result()
+}
+
+async function saveData(){
+    resultJSON.length = 0;
+    await result()
+    fetch('/attempt')
+    .then(response => response.json())
+    .then(responseText => {
+        var maxId = 0;
+        responseText.forEach(t => (t.id > maxId) ? maxId = t.id : 0)
+        const postAttempt = {}
+        postAttempt.id = ++maxId
+        postAttempt.idUser = 1
+        postAttempt.idTheme = 1
+        postAttempt.result = resultJSON
+        fetch('/attempt', {
+            method: "POST",
+            headers: {"content-type": "application/json"},
+            body: JSON.stringify(postAttempt)
+        })
+        .then(response => response.text())
+        .then(responseText => {
+            console.log(responseText)
+            resultJSON.length = 0;
+        })
+    });
 }

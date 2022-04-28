@@ -1,11 +1,16 @@
 //задание с группированием слов
 var colorBD = ["white", "rgb(143, 188, 143)", "rgb(205,205,94)", "rgb(255, 205, 94)", "rgb(180,255,87)", "rgb(255,205,152)", "rgb(0,255,148)", "rgb(255,205,205)", "rgb(67,255,203)", "rgb(222,154,154)", "rgb(126, 205, 205)", "rgb(222,154,207)", "rgb(154,154,207)", "rgb(205,205,255)"];
 var flag = 1;
-var resultColor = [];
+var resultColor = {
+    id: [],
+    resultC: [],
+    resultClusteringColor: []
+};
 var resultClusteringColor = [];
 var numberEndTryColor = 0;
 var lenColor = 0;
 var colFalse = 0;
+var countColor = 1;
 
 function colorWord() {
 
@@ -29,52 +34,67 @@ function colorWord() {
 function checkColorWord(){
     var printBlock = document.getElementById("printColor");
     //var pElement = document.createElement("tr");
-    resultColor.push(clickProvColorWord())
-    if (resultColor[numberEndTryColor] == -1) {
-        resultColor.pop();
-        numberEndTryColor--;
-        printBlock.innerHTML = "Все поля должны быть закрашены"
+    resultColor.id.push(countColor++)
+    resultColor.resultC.push(clickProvColorWord())
+    //кластеризация
+    var rezultq = clustering([resultColor.resultC[numberEndTryColor]], lenColor);
+    //добавление результата кластеризации
+    resultColor.resultClusteringColor.push(rezultq)
+    //отметка правильности выполнения задания
+    if (rezultq == "Еще остались ошибки. Сделай еще раз") {
+        document.getElementById("color").className = "w3-bar-item w3-button tablink w3-red";
+        colFalse++;
     }
-    else {
-        //кластеризация
-	    var rezultq = clustering([resultColor[numberEndTryColor]], lenColor);
-        //добавление резльтата кластеризации
-	    resultClusteringColor.push(rezultq)
-        //отметка правильности выполнения задания
-	    if (rezultq == "Еще остались ошибки. Сделай еще раз") {
-            document.getElementById("color").className = "w3-bar-item w3-button tablink w3-red";
-            colFalse++;
-        }
-	    if (rezultq == "Лучше сделать задание еще раз") {
-            document.getElementById("color").className = "w3-bar-item w3-button tablink w3-yellow";
-        }
-	    if (rezultq == "Переходи к следующему заданию") {
-            document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
-            rootTrueColor();
-        }
-        var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-        var len = resultColor.length; 
-        for (var i = 0; i < len; i++){
-            strColorWord += "<tr> <td>"
-            strColorWord += (i + 1).toString() + "</td>"
-            strColorWord += "<td>" + resultColor[i].toString() + "</td>"
-            strColorWord += "<td>" + resultClusteringColor[i].toString() + "</td>"
-        }
-        //pElement.innerHTML = str + "</tr>"
-        //printBlock.appendChild(pElement);
-        printBlock.innerHTML = strColorWord
-        if (colFalse == 2) rootColor(0, 5)
-        if (colFalse > 2) rootColor(0, 15)
+    if (rezultq == "Лучше сделать задание еще раз") {
+        document.getElementById("color").className = "w3-bar-item w3-button tablink w3-yellow";
     }
+    if (rezultq == "Переходи к следующему заданию") {
+        document.getElementById("color").className = "w3-bar-item w3-button tablink w3-green";
+        rootTrueColor();
+    }
+    
+    //pElement.innerHTML = str + "</tr>"
+    //printBlock.appendChild(pElement);
+    printBlock.innerHTML = writeTableColor()
+    if (colFalse == 2) rootColor(0, 5)
+    if (colFalse > 2) rootColor(0, 15)
     numberEndTryColor++
 }
 
+function writeTableColor(){
+    var strColorWord = "<tr><td class='td_3'>Номер попытки</td><td class='td_3'>Результат</td><td class='td_3'>Подсказка</td></tr>"
+    var len = resultColor.resultC.length; 
+    for (var i = 0; i < len; i++){
+        strColorWord += "<tr> <td class='td_3'>"
+        strColorWord += resultColor.id[i].toString() + "</td>"
+        strColorWord += "<td class='td_3'>" + resultColor.resultC[i].toString() + "</td>"
+        strColorWord += "<td class='td_3'>" + resultColor.resultClusteringColor[i].toString() + "</td>"
+    }
+    return strColorWord
+}
+
 //Задача первых слов нужными цветами 
-function startColor(){
+async function startColor(){
     for (var j = 0; j < numberKoren; j++){
         var s = "word" + j;
         document.getElementById(s).style.backgroundColor = colorBD[j+1]
     }
+    await fetch('/attempt')
+    .then(response => response.json())
+    .then(responseText => {
+        var len = responseText.length
+        if (len != 0){
+            var q = responseText[len-1].result[0].hint
+            if (q != 'Не пройдено'){
+                resultColor.id.push("-")
+                resultColor.resultC.push(responseText[len-1].result[0].result)
+                resultColor.resultClusteringColor.push(responseText[len-1].result[0].hint)
+                numberEndTryColor++
+                var printBlock = document.getElementById("printColor");
+                printBlock.innerHTML = writeTableColor()
+            }
+        }
+    });
 }
 
 function rootColor(start, end){

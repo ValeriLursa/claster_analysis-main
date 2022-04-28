@@ -15,11 +15,12 @@ var textMasOld = [];
 var message;
 var wordcolor = [[], [], []];
 var tablinks = [];
+var globalFlagFirst = true;
 
 window.onload = function () {
 	console.log("Загрузился");
 	tablinks = document.getElementsByClassName("tablink");
-	//подача номера теста для подачи входных данных
+	//передача темы на форму из бд
 	var numberTest = document.getElementById("Theme").textContent;
 	//подача входных данных
 	vhod(numberTest);
@@ -71,7 +72,9 @@ window.onload = function () {
 			str[j].innerHTML = s;
 
 		}
+		returnLastTry(i)
 	}
+	
 	this.console.log("Задание с селектом выведено");
 	kolDetailedAnswer = masDetailedAnswer.length;
 	this.globalFlagOnload = true;

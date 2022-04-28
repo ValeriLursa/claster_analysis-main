@@ -42,8 +42,7 @@ function vhod(numberTest) {
 			dataProvSelect = ["получает", "обрабатывает", "использует", "хранит", "увеличивается", "собирают", "обрабатывают"];
 			masProvSelect = [dataProvSelect];
 			for (var i = 0; i< masProvSelect.length; i++){
-				resultSelect.push([])
-				resultClusteringSelect.push([])
+				resultSelectArray.push(resultSelect)
 				numberEndTry.push(0)
 			}
 			numTextZad = 7;

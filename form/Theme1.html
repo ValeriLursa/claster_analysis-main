@@ -13,8 +13,10 @@
 <script src="../js/form/scriptbutton.js"></script>
 <h1 id="Theme">Тема 1. Что изучает информатика?</h1>
 <!--<script src="../js/form/db.js" async></script>-->
+<script src="../fetch.js"acync></script>
 <script src="../js/form/scriptOnload.js" async></script>
 <script src="../js/form/scriptVhod.js" async></script>
+
 <!--<script src="../saveData.js" async></script>-->
 <p class="text_zadanie site_padding">Цель работы: сообщение сведений об информации, её видах и
     способах использования.</p>
@@ -30,6 +32,7 @@
     <button class=" w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
     <button class=" w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
     <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="openTask('Task10')">Итог</button>
+    <button type="submit" class="btn btn-primary w3-btn w3-button" onclick="saveData()">Сохранить результат</button>
 </nav>
     <div class="task" id="Task1">
         <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, переведите их на свой язык:</p>
@@ -291,7 +294,7 @@
     <a id="back2Top" title="Back to top" href="#">&#10148;</a>
     <a id="back2Top2" title="Back to top" href="#">&#9668;</a>
 <script>
-    function openTask(tabName) {
+    async function openTask(tabName) {
         if (globalFlagOnload) { 
             var i;
             var x = document.getElementsByClassName("task");
@@ -300,13 +303,12 @@
             }
             document.getElementById(tabName).style.display = "block";
             if (tabName == 'Task10') {
-                result()
+                await result()
             }
         }
     }
 
     //бд
-    
 </script>
 <script src="../lib/jquery/dist/jquery.min.js"></script>
 <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

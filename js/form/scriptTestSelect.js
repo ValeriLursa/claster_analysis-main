@@ -1,4 +1,9 @@
-var resultSelect = [];
+resultSelect = {
+	id:[],
+	resultS:[],
+	resultClusteringSelect:[],
+}
+var resultSelectArray = [];
 var resultClusteringSelect = [];
 var numberEndTry = [];
 
@@ -10,27 +15,32 @@ function checkSelect(s){
 	var wordProv = document.getElementsByClassName(str);
 	len = wordProv.length
 	//проверка задания
-	resultSelect[s].push([clickSelect(wordProv, masProvSelect[s])])
+	resultSelectArray[s].id.push(numberEndTry[s])
+	resultSelectArray[s].resultS.push(clickSelect(wordProv, masProvSelect[s]))
 	//кластеризация
-	var rezultq = clustering(resultSelect[s][numberEndTry[s] - 1], len);
+	var rezultq = clustering([resultSelectArray[s].resultS[numberEndTry[s] - 1]], len);
 	//добавление резльтата кластеризации
-	resultClusteringSelect[s].push(rezultq)
+	resultSelectArray[s].resultClusteringSelect.push(rezultq)
 	//отметка правильности выполнения задания
 	if (rezultq == "Еще остались ошибки. Сделай еще раз") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-red";
 	if (rezultq == "Лучше сделать задание еще раз") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-yellow";
 	if (rezultq == "Переходи к следующему заданию") document.getElementById(ss).className = "w3-bar-item w3-button tablink w3-green";
-	//Вывод резльтатов всех попыток
+	//Вывод результатов всех попыток
 	var print = "printSelect" + s
 	var printBlock = document.getElementById(print);
-	var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-	var len = resultSelect[s].length; 
+	printBlock.innerHTML = writeTableSelect(s)
+}
+
+function writeTableSelect(s){
+	var strColorWord = "<tr><td class='td_3'>Номер попытки</td><td class='td_3'>Результат</td><td class='td_3'>Подсказка</td></tr>"
+	var len = resultSelectArray[s].resultS.length; 
 	for (var i = 0; i < len; i++){
-		strColorWord += "<tr> <td>"
-		strColorWord += (i+1).toString() + "</td>"
-		strColorWord += "<td>" + resultSelect[s][i][0].toString() + "</td>"
-		strColorWord += "<td>" + resultClusteringSelect[s][i].toString() + "</td>"
+		strColorWord += "<tr> <td class='td_3'>"
+		strColorWord += resultSelectArray[s].id[i].toString() + "</td>"
+		strColorWord += "<td class='td_3'>" + resultSelectArray[s].resultS[i].toString() + "</td>"
+		strColorWord += "<td class='td_3'>" + resultSelectArray[s].resultClusteringSelect[i] + "</td>"
 	}
-	printBlock.innerHTML = strColorWord
+	return strColorWord
 }
 
 
@@ -41,6 +51,27 @@ function selIndex(ii,masRez) {
 	}
 	selectStr += "</select>";
 	return selectStr;
+}
+
+async function returnLastTry(s){
+	//вывод предыдущей попытки
+	await fetch('/attempt')
+    .then(response => response.json())
+    .then(responseText => {
+        var len = responseText.length
+		if (len != 0){
+			var q = responseText[len-1].result[3].hint
+			console.log(q)
+			if (q != 'Не пройдено'){
+				resultSelectArray[s].id.push("-")
+				resultSelectArray[s].resultS.push(responseText[len-1].result[3].result)
+				resultSelectArray[s].resultClusteringSelect.push(responseText[len-1].result[3].hint)
+				var printBlock = document.getElementById("printSelect"+s);
+				printBlock.innerHTML = writeTableSelect(s)
+				numberEndTry[s]++;
+			}
+		}
+    });
 }
 
 function clickSelect(array, masRez) {

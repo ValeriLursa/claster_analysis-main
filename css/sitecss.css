@@ -118,7 +118,9 @@ td{
     width : 50%;
     padding: 5px;
 }
-
+.td_border{
+    border: 5px solid #dee2e6;
+}
 .padding{
     padding: 5px;
 }
@@ -133,7 +135,8 @@ td{
 
 .td_3{
     width : 30%;
-    margin: 5px
+    margin: 5px;
+    border: 1px solid #dee2e6;
 }
 
 /*@media (max-width:992px) {
