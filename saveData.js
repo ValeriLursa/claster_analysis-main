@@ -28,6 +28,7 @@ app.get("/css/stylebutton.css", (req, res) => res.sendFile(`${__dirname}/css/sty
 app.get("/js/form/scriptbutton.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptbutton.js`))
 app.get("/js/form/scriptOnload.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptOnload.js`))
 app.get("/js/form/scriptVhod.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptVhod.js`))
+app.get("/fetch.js", (req, res) => res.sendFile(`${__dirname}/fetch.js`))
 //  check files
 app.get("/js/form/scriptProverka.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptProverka.js`))
 app.get("/js/form/scriptTestPrilSuch.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptTestPrilSuch.js`))
@@ -46,15 +47,15 @@ app.get("/js/klaster/klaster.js", (req, res) => res.sendFile(`${__dirname}/js/kl
 //  save data files
 //app.get("/saveData.js", (req, res) => res.sendFile(`${__dirname}/saveData.js`))
 //  different
-app.get("/lib/jquery/dist/jquery.min.js", (req, res) => res.sendFile(`${__dirname}/lib/jquery/dist/jquery.min.js`))
-app.get("/lib/bootstrap/dist/js/bootstrap.bundle.min.js", (req, res) => res.sendFile(`${__dirname}/lib/bootstrap/dist/js/bootstrap.bundle.min.js`))
-app.get("/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map", (req, res) => res.sendFile(`${__dirname}/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map`))
+//app.get("/lib/jquery/dist/jquery.min.js", (req, res) => res.sendFile(`${__dirname}/lib/jquery/dist/jquery.min.js`))
+//app.get("/lib/bootstrap/dist/js/bootstrap.bundle.min.js", (req, res) => res.sendFile(`${__dirname}/lib/bootstrap/dist/js/bootstrap.bundle.min.js`))
+//app.get("/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map", (req, res) => res.sendFile(`${__dirname}/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map`))
 
-app.get("/user", async (req, res) => {
-    const rows = await readUsers();
-    res.setHeader("content-type", "application/json")
-    res.send(JSON.stringify(rows))
-})
+// app.get("/user", async (req, res) => {
+//     const rows = await readUsers();
+//     res.setHeader("content-type", "application/json")
+//     res.send(JSON.stringify(rows))
+// })
 
 app.get("/attempt", async (req, res) => {
     const rows = await readAttempt();
@@ -62,15 +63,21 @@ app.get("/attempt", async (req, res) => {
     res.send(JSON.stringify(rows))
 })
 
+app.get("/theme", async (req, res) => {
+    const rows = await readTheme();
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows))
+})
+
 var guser = 1;
 var gtheme = 1;
-var count = 3;
+var count = 6;
 
 app.post("/attempt", async (req, res) => {
     let result = {}
     try{
         const reqJson = req.body;
-        await createAttempt(count, guser, gtheme, reqJson.result);
+        await createAttempt(reqJson.id, reqJson.idUser, reqJson.idTheme, reqJson.result);
         count++;
         result.success = true;
     }
@@ -83,22 +90,22 @@ app.post("/attempt", async (req, res) => {
     }
 })
 
-app.delete("/attempt", async (req, res) => {
-    let result = {}
-    try{
-        const reqJson = req.body;
-        await deleteAttempt(reqJson.id);
-        count--;
-        result.success = true;
-    }
-    catch(e){
-        result.success=false;
-    }
-    finally{
-        res.setHeader("content-type", "application/json")
-        res.send(JSON.stringify(result))
-    }
-})
+// app.delete("/attempt", async (req, res) => {
+//     let result = {}
+//     try{
+//         const reqJson = req.body;
+//         await deleteAttempt(reqJson.id);
+//         count--;
+//         result.success = true;
+//     }
+//     catch(e){
+//         result.success=false;
+//     }
+//     finally{
+//         res.setHeader("content-type", "application/json")
+//         res.send(JSON.stringify(result))
+//     }
+// })
 
 var flagStart = true;
 if (flagStart) start();
@@ -132,10 +139,19 @@ async function disconnect(){
     }
 }
 
-async function readUsers(){
+// async function readUsers(){
+//     try{
+//         const results = await client.query("select * from \"users\"");
+//         return results.rows;
+//     }
+//     catch(e){
+//         return [];
+//     }
+// }
+async function readTheme(){
     try{
-        const results = await client.query("select * from \"users\"");
-        return results.rows;
+        const result = await client.query("select * from \"theme\" order by id asc");
+        return result.rows;
     }
     catch(e){
         return [];
@@ -144,7 +160,7 @@ async function readUsers(){
 
 async function readAttempt(){
     try{
-        const results = await client.query("select result from \"attempt\" order by id asc");
+        const results = await client.query("select * from \"attempt\" order by id asc");
         return results.rows;
     }
     catch(e){
@@ -162,13 +178,13 @@ async function createAttempt(id, user, theme, text){
     }
 }
 
-async function deleteAttempt(id){
-    try{
-        await client.query("delete from \"attempt\" where id = $1", [id]);
-        return true;
-    }
-    catch(e){
-        return false;
-    }
-}
+// async function deleteAttempt(id){
+//     try{
+//         await client.query("delete from \"attempt\" where id = $1", [id]);
+//         return true;
+//     }
+//     catch(e){
+//         return false;
+//     }
+// }
 
