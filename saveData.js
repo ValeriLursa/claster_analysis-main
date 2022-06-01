@@ -30,6 +30,7 @@ app.get("/js/form/scriptOnload.js", (req, res) => res.sendFile(`${__dirname}/js/
 app.get("/js/form/scriptVhod.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptVhod.js`))
 app.get("/fetch.js", (req, res) => res.sendFile(`${__dirname}/fetch.js`))
 //  check files
+app.get("/js/form/scriptTest.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptTest.js`))
 app.get("/js/form/scriptProverka.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptProverka.js`))
 app.get("/js/form/scriptTestPrilSuch.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptTestPrilSuch.js`))
 app.get("/js/form/scriptTestColor.js", (req, res) => res.sendFile(`${__dirname}/js/form/scriptTestColor.js`))
@@ -44,6 +45,8 @@ app.get("/js/klaster/norm_Xk.js", (req, res) => res.sendFile(`${__dirname}/js/kl
 app.get("/js/klaster/euc_distance.js", (req, res) => res.sendFile(`${__dirname}/js/klaster/euc_distance.js`))
 app.get("/js/klaster/main.js", (req, res) => res.sendFile(`${__dirname}/js/klaster/main.js`))
 app.get("/js/klaster/klaster.js", (req, res) => res.sendFile(`${__dirname}/js/klaster/klaster.js`))
+app.get("/js/klaster/Clustering.js", (req, res) => res.sendFile(`${__dirname}/js/klaster/Clustering.js`))
+app.get("/js/klaster/main1.js", (req, res) => res.sendFile(`${__dirname}/js/klaster/main1.js`))
 //  save data files
 //app.get("/saveData.js", (req, res) => res.sendFile(`${__dirname}/saveData.js`))
 //  different

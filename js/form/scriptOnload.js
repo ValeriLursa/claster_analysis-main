@@ -72,11 +72,22 @@ window.onload = function () {
 			str[j].innerHTML = s;
 
 		}
+		resultSelectArray.push(new resultSelect())
 		returnLastTry(i)
 	}
 	
 	this.console.log("Задание с селектом выведено");
+	kolProvSuch = masShortAnswer.length;
+	for (var i = 0; i< kolProvSuch; i++){
+		resultSuchArray.push(new resultSuch())
+		returnLastTrySuch(i);
+	}
+
 	kolDetailedAnswer = masDetailedAnswer.length;
+	for (var i=0;i<kolDetailedAnswer;i++){
+		resultMasArray.push(new resultMas())
+		returnLastTryMas(i)
+	}
 	this.globalFlagOnload = true;
 }
 

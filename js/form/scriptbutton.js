@@ -26,5 +26,3 @@ jQuery(document).ready(function () {
         });
     
     });
-
-console.log(document.documentElement.scrollHeight)

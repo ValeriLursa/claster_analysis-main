@@ -1,35 +1,66 @@
-var resultSuch = [];
+class resultSuch extends ScriptTest {
+
+};
+var resultSuchArray = [];
 var resultClusteringSuch = [];
 var numberEndTrySuch = [];
 
 function checkProvPrilSuch(s){
 	//проверка задания с кратким ответом
-	numberEndTrySuch[s]++;
 	var str = "srav" + s;
 	var ss = "such" + s;
 	var wordProv = document.getElementsByClassName(ss);
 	len = wordProv.length
 	//проверка задания
-	resultSuch[s].push([clickProvPrilSuch(wordProv, masShortAnswer[s])])
+	resultSuchArray[s].addId(resultSuchArray[s].id.length + 1)
+	resultSuchArray[s].addResult(clickProvPrilSuch(wordProv, masShortAnswer[s]))
 	//кластеризация
-	var rezultq = clustering(resultSuch[s][numberEndTrySuch[s] - 1], len);
+	var rezultq = clusteringM([resultSuchArray[s].result[resultSuchArray[s].id.length - 1]], len);
 	//добавление резльтата кластеризации
-	resultClusteringSuch[s].push(rezultq)
-	if (rezultq == "Еще остались ошибки. Сделай еще раз") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-red";
-	if (rezultq == "Лучше сделать задание еще раз") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-yellow";
-	if (rezultq == "Переходи к следующему заданию") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-green";
+	resultSuchArray[s].addResultClustering(rezultq)
+	writeButtonSuch(rezultq, str)
 	//Вывод резльтатов всех попыток
 	var print = "printSuch" + s
 	var printBlock = document.getElementById(print);
-	var strColorWord = "<tr><td>Номер попытки</td><td>Результат</td><td>Подсказка</td></tr>"
-	var len = resultSuch[s].length; 
+	printBlock.innerHTML = writeTableSuch(s)
+}
+
+function writeButtonSuch(rezultq, str){
+	if (rezultq == "Еще остались ошибки. Сделай еще раз") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-red";
+	if (rezultq == "Лучше сделать задание еще раз") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-yellow";
+	if (rezultq == "Переходи к следующему заданию") document.getElementById(str).className = "w3-bar-item w3-button tablink w3-green";
+}
+
+function writeTableSuch(s){
+	var strColorWord = "<tr><td class='td_3'>Номер попытки</td><td class='td_3'>Результат</td><td class='td_3'>Подсказка</td></tr>"
+	var len = resultSuchArray[s].result.length; 
 	for (var i = 0; i < len; i++){
-		strColorWord += "<tr> <td>"
-		strColorWord += (i+1).toString() + "</td>"
-		strColorWord += "<td>" + resultSuch[s][i][0].toString() + "</td>"
-		strColorWord += "<td>" + resultClusteringSuch[s][i].toString() + "</td>"
+		strColorWord += "<tr> <td class='td_3'>"
+		strColorWord += resultSuchArray[s].id[i].toString() + "</td>"
+		strColorWord += "<td class='td_3'>" + resultSuchArray[s].result[i].toString() + "</td>"
+		strColorWord += "<td class='td_3'>" + resultSuchArray[s].resultClustering[i] + "</td>"
 	}
-	printBlock.innerHTML = strColorWord
+	return strColorWord
+}
+
+async function returnLastTrySuch(s){
+	//вывод предыдущей попытки
+	await fetch('/attempt')
+    .then(response => response.json())
+    .then(responseText => {
+        var len = responseText.length
+		if (len != 0){
+			var q = responseText[len-1].result[1].hint
+			if (q != 'Не пройдено'){
+				resultSuchArray[s].addId("-")
+				resultSuchArray[s].addResult(responseText[len-1].result[1].result)
+				resultSuchArray[s].addResultClustering(q)
+				var printBlock = document.getElementById("printSuch"+s);
+				printBlock.innerHTML = writeTableSuch(s)
+				writeButtonSuch(q, "srav" + s)
+			}
+		}
+    });
 }
 
 function clickProvPrilSuch(masPolz, masVhod) {
