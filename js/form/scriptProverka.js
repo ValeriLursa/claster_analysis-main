@@ -5,10 +5,6 @@ var flagOneColor = false;
 var resSum = 46;
 var resultJSON = []
 
-function sayHello() {
-    console.log("Hello METANIT.COM");
-}
-
 function proverka() {
     if (globalFlagOnload) {
         for (var i = 0; i < tablinks.length; i++) {
@@ -125,6 +121,7 @@ async function saveData(){
         .then(responseText => {
             console.log(responseText)
             resultJSON.length = 0;
-        })
+            alert("Данные сохранены")
+        })  
     });
 }
